@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+import { postJson } from '../api'
 import newsletterImage from '../assets/newsletter.png'
 
 export default function Newsletter() {
@@ -12,20 +13,12 @@ export default function Newsletter() {
     setLoading(true)
 
     try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      })
-
-      const data = await res.json()
-
-      setMsg({ text: data.message, ok: res.ok })
-
-      if (res.ok) setEmail('')
-    } catch {
+      const data = await postJson('/api/subscribe', { email })
+      setMsg({ text: data.message, ok: true })
+      setEmail('')
+    } catch (error) {
       setMsg({
-        text: 'Server not reachable. Try again.',
+        text: error.message || 'Server not reachable. Try again.',
         ok: false
       })
     } finally {

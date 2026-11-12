@@ -25,8 +25,8 @@ export default function Home() {
         .page-content > section,
         .page-content > .section,
         .page-content > div {
-          padding-top: 25px !important;
-          padding-bottom: 25px !important;
+          padding-top: 0 !important;
+          padding-bottom: 0 !important;
         }
 
         .page-content .section,
@@ -70,35 +70,10 @@ export default function Home() {
         }
 
         @media (max-width: 991px) {
-          .page-content > section,
-          .page-content > .section,
-          .page-content > div {
-            padding-top: 22px !important;
-            padding-bottom: 22px !important;
-          }
-
           #find-talent,
           #find-job,
           #skills {
-            padding-top: 20px !important;
-            padding-bottom: 20px !important;
-          }
-        }
-
-        @media (max-width: 767px) {
-          .page-content > section,
-          .page-content > .section,
-          .page-content > div {
-            padding-top: 18px !important;
-            padding-bottom: 18px !important;
-          }
-
-          #find-talent,
-          #find-job,
-          #skills,
-          .reviews-section {
-            padding-top: 18px !important;
-            padding-bottom: 18px !important;
+            scroll-margin-top: 100px;
           }
         }
       `}</style>

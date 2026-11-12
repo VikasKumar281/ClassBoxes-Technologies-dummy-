@@ -53,21 +53,23 @@ export default function Header({ onSearch }) {
       <style>{`
         .cb-header {
           position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 105px;
+          top: 16px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: min(1180px, calc(100% - 24px));
+          height: 74px;
           z-index: 1050;
-          background: transparent;
-          box-shadow: none;
-          transition: height 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+          background: rgba(255, 255, 255, 0.94);
+          border-radius: 999px;
+          box-shadow: 0 12px 40px rgba(16, 24, 40, 0.1);
+          backdrop-filter: blur(16px);
+          transition: height 0.3s ease, box-shadow 0.3s ease;
         }
 
         .cb-header.scrolled {
-          height: 76px;
-          background: rgba(255, 255, 255, 0.97);
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-          backdrop-filter: blur(12px);
+          height: 68px;
+          background: #fff;
+          box-shadow: 0 10px 28px rgba(16, 24, 40, 0.12);
         }
 
         .cb-header .navbar {
@@ -76,28 +78,28 @@ export default function Header({ onSearch }) {
 
         .cb-logo {
           display: block;
-          width: 300px;
-          height: 82px;
+          width: 176px;
+          height: 48px;
           object-fit: contain;
           object-position: left center;
           transition: width 0.3s ease, height 0.3s ease;
         }
 
         .cb-header.scrolled .cb-logo {
-          width: 265px;
-          height: 65px;
+          width: 160px;
+          height: 44px;
         }
 
         .cb-nav-menu {
           display: flex;
           align-items: center;
-          gap: 28px;
+          gap: 14px;
         }
 
         .cb-nav-menu > div {
           display: flex;
           align-items: center;
-          gap: 25px;
+          gap: 14px;
         }
 
         .cb-nav-link {
@@ -193,28 +195,23 @@ export default function Header({ onSearch }) {
         }
 
         @media (max-width: 1399.98px) {
-          .cb-logo {
-            width: 260px;
-          }
-
+          .cb-logo,
           .cb-header.scrolled .cb-logo {
-            width: 235px;
+            width: 150px;
+            height: 42px;
           }
 
-          .cb-nav-menu {
-            gap: 20px;
-          }
-
+          .cb-nav-menu,
           .cb-nav-menu > div {
-            gap: 19px;
+            gap: 10px;
           }
 
           .cb-nav-link {
-            font-size: 13px;
+            font-size: 12.5px;
           }
 
           .cb-phone-btn {
-            padding: 12px 16px;
+            padding: 10px 14px;
             font-size: 12px;
           }
         }
@@ -228,26 +225,22 @@ export default function Header({ onSearch }) {
             height: 72px;
           }
 
-          .cb-logo {
-            width: 235px;
-            height: 65px;
-          }
-
+          .cb-logo,
           .cb-header.scrolled .cb-logo {
-            width: 215px;
-            height: 58px;
+            width: 148px;
+            height: 42px;
           }
 
           .cb-nav-menu {
             position: absolute;
-            top: 100%;
+            top: calc(100% + 8px);
             left: 0;
             width: 100%;
             display: none;
-            padding: 20px 6% 25px;
+            padding: 16px 18px 18px;
             background: #ffffff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
           }
 
           .cb-nav-menu.show {
@@ -287,14 +280,10 @@ export default function Header({ onSearch }) {
             height: 65px;
           }
 
-          .cb-logo {
-            width: 190px;
-            height: 55px;
-          }
-
+          .cb-logo,
           .cb-header.scrolled .cb-logo {
-            width: 175px;
-            height: 48px;
+            width: 136px;
+            height: 38px;
           }
 
           .cb-header .navbar-toggler {

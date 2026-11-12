@@ -8,7 +8,26 @@ const app = express()
 const port = Number(process.env.PORT) || 5000
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-app.use(cors({ origin: ['http://localhost:5173', 'http://127.0.0.1:5173'] }))
+const extraOrigins = (process.env.CLIENT_URL || '')
+  .split(',')
+  .map((item) => item.trim())
+  .filter(Boolean)
+
+app.use(cors({
+  origin(origin, callback) {
+    if (
+      !origin
+      || origin.startsWith('http://localhost:')
+      || origin.startsWith('http://127.0.0.1:')
+      || origin.endsWith('.onrender.com')
+      || extraOrigins.includes(origin)
+    ) {
+      callback(null, true)
+      return
+    }
+    callback(null, false)
+  }
+}))
 app.use(express.json())
 
 function text(value, max = 500) {

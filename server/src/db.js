@@ -2,11 +2,12 @@ import mongoose from 'mongoose'
 import { MongoMemoryServer } from 'mongodb-memory-server'
 
 export async function connectDb() {
-  const configured = process.env.MONGODB_URI
+  const configured = process.env.MONGODB_URI || process.env.MONGO_URI
 
   if (configured) {
-    await mongoose.connect(configured)
-    console.log('MongoDB connected')
+    await mongoose.connect(configured, { dbName: 'classboxes' })
+    const ping = await mongoose.connection.db.command({ ping: 1 })
+    console.log(`MongoDB connected: ${mongoose.connection.host}/${mongoose.connection.name} (ping ${ping.ok})`)
     return
   }
 

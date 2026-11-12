@@ -1,5 +1,6 @@
-
-import heroImage from "../assets/hero.png";
+import { Link } from 'react-router-dom'
+import heroPoster from '../assets/hero.png'
+import heroVideo from '../assets/corporate-recruitment-brand.mp4'
 
 export default function Hero() {
   return (
@@ -7,21 +8,21 @@ export default function Hero() {
       <style>{`
         .hero {
           width: 100%;
-          height: 100vh;
-          min-height: 650px;
+          min-height: 100vh;
           position: relative;
           display: flex;
           align-items: center;
           overflow: hidden;
+          background: #f4f5f7;
         }
 
-        .hero-background-image {
+        .hero-media {
           position: absolute;
           inset: 0;
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center;
+          object-position: center 30%;
           z-index: 0;
         }
 
@@ -29,32 +30,62 @@ export default function Hero() {
           content: "";
           position: absolute;
           inset: 0;
-          background: rgba(255, 255, 255, 0.08);
           z-index: 1;
+          background:
+            linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.55) 34%, rgba(255,255,255,0.05) 62%, rgba(255,255,255,0.12) 100%);
         }
 
         .hero-content {
           position: relative;
           z-index: 2;
           width: 100%;
+          padding: 120px 0 72px;
         }
 
-        .hero .eyebrow {
-          font-size: 18px;
-          color: #292929;
-          margin-bottom: 20px;
+        .hero-kicker {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 18px;
+          padding: 7px 14px;
+          border-radius: 999px;
+          background: rgba(255,255,255,0.8);
+          color: #f04455;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        .hero-kicker span {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #f04455;
         }
 
         .hero h1 {
-          font-size: clamp(42px, 5vw, 76px);
+          max-width: 720px;
+          margin-bottom: 18px;
+          font-size: clamp(42px, 5.4vw, 78px);
           font-weight: 800;
-          line-height: 1.15;
-          color: #292d3c;
-          margin-bottom: 40px;
+          line-height: 0.98;
+          letter-spacing: -0.03em;
+          color: #16181d;
         }
 
-        .hero .red {
-          color: #f04455;
+        .hero h1 em {
+          font-family: "Playfair Display", Georgia, serif;
+          font-style: italic;
+          font-weight: 600;
+          color: #e10600;
+        }
+
+        .hero-lead {
+          max-width: 520px;
+          margin-bottom: 28px;
+          color: #3c4250;
+          font-size: 17px;
+          line-height: 1.65;
         }
 
         .hero .btn-row {
@@ -64,131 +95,69 @@ export default function Hero() {
         }
 
         .hero .btn {
-          padding: 18px 32px;
-          border-radius: 50px;
-          font-size: 14px;
-          font-weight: 700;
-          text-decoration: none;
-          transition: all 0.3s ease;
+          margin-top: 0;
+          padding: 15px 26px;
+          border-radius: 999px;
+          font-size: 15px;
         }
 
-        .hero .btn-red {
-          background: #f04455;
-          color: #fff;
+        .hero .btn-ghost {
+          background: #fff;
+          color: #16181d;
+          border: 1px solid #e4e6eb;
         }
 
-        .hero .btn-red:hover {
-          background: #d92f42;
-          color: #fff;
-          transform: translateY(-3px);
-        }
-
-        .hero .btn-dark {
-          background: #303441;
-          color: #fff;
-        }
-
-        .hero .btn-dark:hover {
-          background: #f04455;
-          color: #fff;
-          transform: translateY(-3px);
-        }
-
-        @media (max-width: 991px) {
-          .hero {
-            min-height: 650px;
-          }
-
-          .hero h1 {
-            font-size: 52px;
-          }
-
-          .hero-background-image {
-            object-position: center;
-          }
+        .hero .btn-ghost:hover {
+          color: #16181d;
+          border-color: #16181d;
         }
 
         @media (max-width: 767px) {
           .hero {
-            height: 100vh;
-            min-height: 600px;
-            text-align: center;
+            text-align: left;
+          }
+
+          .hero::before {
+            background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.72) 55%, rgba(255,255,255,0.4) 100%);
           }
 
           .hero h1 {
             font-size: 42px;
           }
 
-          .hero .btn-row {
-            justify-content: center;
-          }
-
           .hero .btn {
-            padding: 15px 22px;
-            font-size: 12px;
-          }
-
-          .hero-background-image {
-            object-position: center;
-          }
-        }
-
-        @media (max-width: 400px) {
-          .hero h1 {
-            font-size: 35px;
-          }
-
-          .hero .btn-row {
-            flex-direction: column;
-            align-items: center;
-          }
-
-          .hero .btn {
-            width: 100%;
-            max-width: 280px;
+            padding: 14px 20px;
+            font-size: 14px;
           }
         }
       `}</style>
 
       <section className="hero" id="home">
-
-        <img
-          src={heroImage}
-          alt="Professional women working in an office"
-          className="hero-background-image"
-        />
+        <video
+          className="hero-media"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={heroPoster}
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
 
         <div className="container hero-content">
-          <div className="row align-items-center">
-
-            <div className="col-lg-7 col-md-9">
-
-              <p className="eyebrow">
-                HIRING IS MORE EASIER NOW
-              </p>
-
-              <h1>
-                <span className="red">Hire Right Staff</span>
-                <br />
-                For Your Team
-              </h1>
-
-              <div className="btn-row">
-                <a href="#contact" className="btn btn-red">
-                  SHARE YOUR REQUIREMENTS
-                </a>
-
-                <a href="#contact" className="btn btn-dark">
-                  CONTACT US NOW
-                </a>
-              </div>
-
-            </div>
-
+          <p className="hero-kicker"><span></span> TECHNOLOGY RECRUITMENT</p>
+          <h1>
+            Connecting <em>Exceptional</em> Talent with Ambitious Teams.
+          </h1>
+          <p className="hero-lead">
+            ClassBoxes trains professionals and places them with companies that need the right people, from first interviews to direct offers.
+          </p>
+          <div className="btn-row">
+            <Link to="/find-talent" className="btn btn-red">Hire Talent</Link>
+            <Link to="/find-a-job" className="btn btn-ghost">Explore Opportunities</Link>
           </div>
         </div>
-
       </section>
     </>
-  );
+  )
 }

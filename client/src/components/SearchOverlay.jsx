@@ -40,7 +40,7 @@ export default function SearchOverlay({ open, onClose }) {
   }
 
   return (
-    <div className="search-overlay" role="dialog" aria-modal="true" aria-label="Search ClassBoxes">
+    <div className="search-overlay" role="dialog" aria-modal="true" aria-label="Search ClassBoxes" onClick={onClose}>
       <style>{`
         .search-overlay {
           position: fixed;
@@ -49,33 +49,42 @@ export default function SearchOverlay({ open, onClose }) {
           display: flex;
           align-items: flex-start;
           justify-content: center;
-          padding: 16vh 20px 40px;
+          padding: 108px 16px 32px;
           overflow: auto;
-          background: #ffffff;
+          background: rgba(17, 20, 28, 0.45);
+          backdrop-filter: blur(4px);
         }
 
         .search-close {
-          position: fixed;
-          top: 28px;
-          right: 36px;
-          width: 54px;
-          height: 54px;
+          position: absolute;
+          top: 14px;
+          right: 14px;
+          width: 36px;
+          height: 36px;
           border: 0;
-          background: transparent;
-          color: #e24b5a;
-          font-size: 42px;
+          border-radius: 50%;
+          background: #f6f6f8;
+          color: #303542;
+          font-size: 22px;
           line-height: 1;
           cursor: pointer;
         }
 
         .search-panel {
-          width: min(760px, 100%);
+          position: relative;
+          width: min(680px, 100%);
+          max-height: calc(100vh - 140px);
+          padding: 22px;
+          border-radius: 24px;
+          background: #fff;
+          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+          overflow: auto;
         }
 
         .search-panel form {
           position: relative;
           max-width: none;
-          margin: 0;
+          margin: 28px 0 0;
         }
 
         .search-panel input {
@@ -156,11 +165,10 @@ export default function SearchOverlay({ open, onClose }) {
         }
       `}</style>
 
+      <div className="search-panel" onClick={(event) => event.stopPropagation()}>
       <button className="search-close" type="button" onClick={onClose} aria-label="Close search">
         ×
       </button>
-
-      <div className="search-panel">
         <form onSubmit={submit}>
           <input
             ref={inputRef}

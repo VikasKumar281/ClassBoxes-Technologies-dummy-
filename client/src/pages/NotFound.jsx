@@ -6,6 +6,7 @@ export default function NotFound() {
 
   return (
     <main className="inner-page search-page">
+      <section>
       <div className="container">
         <p className="page-kicker">404</p>
         <h1>This page is not on the site.</h1>
@@ -17,6 +18,7 @@ export default function NotFound() {
           <Link className="cb-btn dark" to="/search">Search</Link>
         </div>
       </div>
+      </section>
     </main>
   )
 }

@@ -27,6 +27,7 @@ export default function Search() {
 
   return (
     <main className="inner-page search-page">
+      <section>
       <div className="container">
         <p className="page-kicker">SEARCH</p>
         <h1>Looking for...</h1>
@@ -63,6 +64,7 @@ export default function Search() {
           ))}
         </div>
       </div>
+      </section>
     </main>
   )
 }
