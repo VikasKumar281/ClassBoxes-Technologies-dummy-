@@ -7,7 +7,7 @@ export default function Footer() {
       <style>{`
         .footer {
           width: 100%;
-          background: #f1f1f5;
+          background: #f6f5f2;
           padding: 55px 0 0;
           color: #303441;
           overflow: hidden;

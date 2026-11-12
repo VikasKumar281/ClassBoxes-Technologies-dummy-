@@ -3,58 +3,63 @@ import usePageTitle from '../usePageTitle'
 import skillsHero from '../assets/brand/skills-hero.jpg'
 
 const steps = [
-  ['01', 'Register Yourself'],
-  ['02', 'Participate'],
-  ['03', 'Result Announcement'],
-  ['04', 'Prize Distribution']
+  ['01', 'Register', 'Tell us your name, the stack you use, and whether you are open to a role.'],
+  ['02', 'Take the review', 'A short look at how you build, test, and explain a decision.'],
+  ['03', 'Hear the notes', 'You get a plain summary of what was strong and what to practice.'],
+  ['04', 'Choose a next step', 'Keep the notes for yourself, or ask us to introduce you to a team.']
 ]
 
 export default function TestSkills() {
   usePageTitle('Test your Skills – ClassBoxes Technologies')
 
   return (
-    <main className="inner-page">
-      <section className="page-hero">
-        <div className="container">
-          <div className="row align-items-center g-4">
-            <div className="col-lg-6">
-              <p className="page-kicker">CHECK YOUR TECHNICAL SKILLS AND WIN PRIZES</p>
-              <h1>
-                <span>Test your Skills</span>
-                <br />
-                &amp; Win Prizes
-              </h1>
-              <p>
-                We at Classboxes Technologies believe that everyone has a unique set of skills that deserve recognition. That’s why we’ve created a platform where individuals can test their skills and win prizes. Our platform offers a variety of skill-based competitions, from coding challenges to design contests, providing opportunities for people to showcase their talent and compete with others.
-              </p>
-              <p>
-                We understand the importance of skill development and recognize the hard work and dedication required to excel in any field. That’s why we’re proud to offer this initiative, which promotes skill development and rewards individuals for their efforts. Join us at Classboxes Technologies and take the first step towards testing your skills and winning exciting prizes!
-              </p>
-              <div className="hero-actions">
-                <a className="cb-btn" href="#inquiry">Register Yourself</a>
-              </div>
+    <main className="studio-page">
+      <section className="studio-hero">
+        <div className="container studio-hero-grid">
+          <div>
+            <p className="kicker dot">Skill reviews</p>
+            <h1>Show the work before the interview.</h1>
+            <p className="quiet">
+              A calm review of how you build, test, and explain. Useful if you want a role through ClassBoxes, and useful if you only want to know where you stand.
+            </p>
+            <div className="pill-row">
+              <a className="pill red" href="#inquiry">Book a review</a>
             </div>
-            <div className="col-lg-6">
-              <div className="hero-art">
-                <img src={skillsHero} alt="Test your skills and win prizes" />
-              </div>
-            </div>
+          </div>
+          <div className="frame">
+            <img src={skillsHero} alt="A skills review in progress" />
           </div>
         </div>
       </section>
 
-      <section className="step-band">
+      <section className="band sand">
         <div className="container">
-          <p className="page-kicker">A REGULAR ONLINE EXAM TO TEST YOUR SKILLS</p>
-          <h2 className="band-title">Prepare yourself for Exam</h2>
-          <p className="step-copy">
-            Participants should ensure they have the necessary software, hardware, and a quiet environment when participating in an online exam. The results are usually available almost instantly or within a few days, depending on the exam’s complexity. Prize distribution in online exams may vary, and it’s essential to read the instructions carefully to understand how it works. An exam requires preparation, focus, and attention to detail to ensure success.
-          </p>
-          <div className="step-grid">
-            {steps.map(([number, label]) => (
-              <article className="step-card" key={number}>
-                <span>{number}</span>
-                <h3>{label}</h3>
+          <p className="kicker dot">What happens</p>
+          <h2>Four moves. No surprise round at the end.</h2>
+          <div className="phase-grid">
+            {steps.map(([number, title, text]) => (
+              <article className="phase" key={number}>
+                <div className="phase-no"><em>Step {number}</em></div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="band">
+        <div className="container">
+          <div className="criterion-grid">
+            {[
+              ['Build', 'Can you take a small feature from a blank file to something another person can run?'],
+              ['Check', 'Do you notice the path that fails, and do you leave a test or a note behind?'],
+              ['Explain', 'Can you say why you chose that approach, in language a teammate can use?']
+            ].map(([title, text]) => (
+              <article className="criterion" key={title}>
+                <div className="criterion-meta"><span>We listen for</span><em>In the review</em></div>
+                <h4>{title}</h4>
+                <p>{text}</p>
               </article>
             ))}
           </div>
@@ -62,9 +67,9 @@ export default function TestSkills() {
       </section>
 
       <GetInTouch
-        eyebrow="TEST YOUR SKILLS"
-        title="Register Yourself"
-        text="Join us at Classboxes Technologies and take the first step towards testing your skills and winning exciting prizes!"
+        eyebrow="Book a review"
+        title="Register for a skill review"
+        text="Share your name and the kind of work you want to be measured on. We will reply with a time."
         showWorkAuth
         source="test-your-skills"
       />

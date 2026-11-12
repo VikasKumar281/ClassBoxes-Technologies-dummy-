@@ -1,52 +1,52 @@
-
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../assets/logo.png'
+
+const menus = [
+  {
+    label: 'What We Do',
+    items: [
+      ['Hire for a team', '/find-talent'],
+      ['Skill reviews', '/test-your-skills']
+    ]
+  },
+  {
+    label: 'Who We Are',
+    items: [['Our story', '/about-us']]
+  },
+  {
+    label: 'Careers',
+    items: [['Open roles', '/find-a-job']]
+  }
+]
 
 export default function Header({ onSearch }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-
+  const [drop, setDrop] = useState('')
   const location = useLocation()
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 40)
-    }
-
+    const onScroll = () => setScrolled(window.scrollY > 24)
     window.addEventListener('scroll', onScroll)
     onScroll()
-
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
+    setOpen(false)
+    setDrop('')
     if (location.hash) {
-      const sectionId = location.hash.substring(1)
-
       const frame = requestAnimationFrame(() => {
-        document.getElementById(sectionId)?.scrollIntoView({
+        document.getElementById(location.hash.slice(1))?.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         })
       })
-
       return () => cancelAnimationFrame(frame)
     }
-
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [location.pathname, location.hash])
-
-  const links = [
-    ['About us', '/about-us'],
-    ['Find a Job', '/find-a-job'],
-    ['Find Talent', '/find-talent'],
-    ['Test your Skills', '/test-your-skills'],
-    ['Contact Us', '/contact-us']
-  ]
 
   return (
     <>
@@ -56,304 +56,201 @@ export default function Header({ onSearch }) {
           top: 16px;
           left: 50%;
           transform: translateX(-50%);
-          width: min(1180px, calc(100% - 24px));
-          height: 74px;
+          width: min(1120px, calc(100% - 24px));
+          height: 72px;
           z-index: 1050;
-          background: rgba(255, 255, 255, 0.94);
+          background: rgba(255,255,255,0.94);
           border-radius: 999px;
-          box-shadow: 0 12px 40px rgba(16, 24, 40, 0.1);
+          box-shadow: 0 14px 40px rgba(16, 24, 40, 0.1);
           backdrop-filter: blur(16px);
-          transition: height 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .cb-header.scrolled {
-          height: 68px;
-          background: #fff;
-          box-shadow: 0 10px 28px rgba(16, 24, 40, 0.12);
+        .cb-header nav,
+        .cb-header .bar {
+          height: 100%;
         }
 
-        .cb-header .navbar {
-          padding: 0;
+        .cb-header .bar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 14px 0 18px;
         }
 
         .cb-logo {
-          display: block;
-          width: 176px;
-          height: 48px;
-          object-fit: contain;
-          object-position: left center;
-          transition: width 0.3s ease, height 0.3s ease;
-        }
-
-        .cb-header.scrolled .cb-logo {
-          width: 160px;
+          width: 158px;
           height: 44px;
+          object-fit: contain;
         }
 
-        .cb-nav-menu {
+        .cb-nav {
           display: flex;
           align-items: center;
-          gap: 14px;
+          gap: 4px;
         }
 
-        .cb-nav-menu > div {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-        }
+        .cb-drop { position: relative; }
 
-        .cb-nav-link {
-          position: relative;
+        .cb-drop > button,
+        .cb-direct {
           display: inline-flex;
           align-items: center;
-          padding: 8px 0 !important;
-          color: #292929;
-          font-size: 14px;
-          font-weight: 600;
-          white-space: nowrap;
-          text-decoration: none;
-          transition: color 0.25s ease;
-        }
-
-        .cb-nav-link::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 0;
-          height: 2px;
-          background: #f04455;
-          border-radius: 5px;
-          transition: width 0.25s ease;
-        }
-
-        .cb-nav-link:hover {
-          color: #f04455;
-        }
-
-        .cb-nav-link:hover::after,
-        .cb-nav-link.active::after {
-          width: 100%;
-        }
-
-        .cb-nav-link.active {
-          color: #f04455;
-        }
-
-        .cb-search-btn {
-          background: none;
+          gap: 6px;
           border: 0;
-          cursor: pointer;
+          background: transparent;
+          color: #2a2e38;
           font-family: inherit;
+          font-size: 14.5px;
+          font-weight: 600;
+          padding: 10px 12px;
+          cursor: pointer;
+          text-decoration: none;
         }
 
-        .cb-search {
-          font-size: 18px;
-          transition: transform 0.25s ease, color 0.25s ease;
+        .cb-drop > button i { font-size: 11px; }
+
+        .cb-direct.active,
+        .cb-drop.on > button,
+        .cb-drop > button:hover,
+        .cb-direct:hover { color: #e10600; }
+
+        .cb-drop-panel {
+          display: none;
+          position: absolute;
+          top: calc(100% + 14px);
+          left: 0;
+          min-width: 210px;
+          padding: 8px;
+          border-radius: 16px;
+          background: #fff;
+          box-shadow: 0 18px 40px rgba(16, 24, 40, 0.12);
         }
 
-        .cb-nav-link:hover .cb-search {
-          transform: scale(1.12);
-          color: #f04455;
+        .cb-drop:hover .cb-drop-panel,
+        .cb-drop.open .cb-drop-panel { display: grid; }
+
+        .cb-drop-panel a {
+          padding: 10px 12px;
+          border-radius: 10px;
+          color: #2a2e38;
+          font-weight: 600;
+          text-decoration: none;
         }
 
-        .cb-phone-btn {
+        .cb-drop-panel a:hover { background: #f6f5f2; color: #e10600; }
+
+        .cb-icon,
+        .cb-hire {
           display: inline-flex;
           align-items: center;
           justify-content: center;
+        }
+
+        .cb-icon {
+          width: 40px;
+          height: 40px;
+          margin-left: 6px;
+          border: 0;
+          border-radius: 50%;
+          background: transparent;
+          color: #16181d;
+          font-size: 16px;
+          cursor: pointer;
+        }
+
+        .cb-hire {
           gap: 8px;
-          padding: 14px 21px;
-          background: #f04455;
-          color: #ffffff;
-          border: 1px solid #f04455;
-          border-radius: 50px;
-          font-size: 13px;
+          height: 44px;
+          margin-left: 8px;
+          padding: 0 16px;
+          border-radius: 999px;
+          background: #e10600;
+          color: #fff;
           font-weight: 700;
-          white-space: nowrap;
           text-decoration: none;
-          transition: all 0.3s ease;
         }
 
-        .cb-phone-btn:hover {
-          background: #d92f42;
-          border-color: #d92f42;
-          color: #ffffff;
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(240, 68, 85, 0.22);
+        .cb-hire:hover { color: #fff; background: #c10500; }
+
+        .cb-burger {
+          display: none;
+          border: 0;
+          background: transparent;
+          font-size: 24px;
         }
 
-        .cb-header .navbar-toggler {
-          padding: 8px;
-          border: none;
-          box-shadow: none;
-          font-size: 25px;
-          color: #292929;
-        }
-
-        .cb-header .navbar-toggler:focus {
-          box-shadow: none;
-        }
-
-        @media (max-width: 1399.98px) {
-          .cb-logo,
-          .cb-header.scrolled .cb-logo {
-            width: 150px;
-            height: 42px;
-          }
-
-          .cb-nav-menu,
-          .cb-nav-menu > div {
-            gap: 10px;
-          }
-
-          .cb-nav-link {
-            font-size: 12.5px;
-          }
-
-          .cb-phone-btn {
-            padding: 10px 14px;
-            font-size: 12px;
-          }
-        }
-
-        @media (max-width: 991.98px) {
-          .cb-header {
-            height: 82px;
-          }
-
-          .cb-header.scrolled {
-            height: 72px;
-          }
-
-          .cb-logo,
-          .cb-header.scrolled .cb-logo {
-            width: 148px;
-            height: 42px;
-          }
-
-          .cb-nav-menu {
+        @media (max-width: 991px) {
+          .cb-burger { display: block; }
+          .cb-nav {
+            display: none;
             position: absolute;
             top: calc(100% + 8px);
             left: 0;
             width: 100%;
-            display: none;
-            padding: 16px 18px 18px;
-            background: #ffffff;
+            padding: 12px;
             border-radius: 20px;
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
-          }
-
-          .cb-nav-menu.show {
-            display: flex;
+            background: #fff;
+            box-shadow: 0 16px 36px rgba(16, 24, 40, 0.12);
             flex-direction: column;
-            align-items: flex-start;
-            gap: 15px;
+            align-items: stretch;
           }
-
-          .cb-nav-menu > div {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 5px;
+          .cb-nav.show { display: flex; }
+          .cb-drop-panel {
+            position: static;
+            box-shadow: none;
+            padding: 0 0 0 12px;
           }
-
-          .cb-nav-link {
-            width: fit-content;
-            padding: 9px 0 !important;
-            font-size: 15px;
-          }
-
-          .cb-phone-btn {
-            margin-top: 5px;
-            padding: 13px 20px;
-            font-size: 13px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .cb-header {
-            height: 72px;
-          }
-
-          .cb-header.scrolled {
-            height: 65px;
-          }
-
-          .cb-logo,
-          .cb-header.scrolled .cb-logo {
-            width: 136px;
-            height: 38px;
-          }
-
-          .cb-header .navbar-toggler {
-            font-size: 23px;
-          }
-
-          .cb-nav-menu {
-            padding: 17px 5% 22px;
-          }
+          .cb-drop:hover .cb-drop-panel { display: none; }
+          .cb-drop.open .cb-drop-panel { display: grid; }
+          .cb-hire, .cb-icon { margin: 6px 0 0; }
         }
       `}</style>
 
       <header className={`cb-header ${scrolled ? 'scrolled' : ''}`}>
-        <nav className="navbar h-100">
-          <div className="container-fluid px-3 px-lg-4 px-xl-5 h-100">
-            <div className="d-flex align-items-center justify-content-between h-100 w-100">
-
-              <Link to="/" className="navbar-brand m-0 p-0">
-                <img
-                  src={logo}
-                  alt="ClassBoxes Logo"
-                  className="cb-logo"
-                />
-              </Link>
-
-              <button
-                className="navbar-toggler d-lg-none"
-                type="button"
-                onClick={() => setOpen(previous => !previous)}
-                aria-label="Toggle navigation"
-                aria-expanded={open}
-              >
-                <span className="navbar-toggler-icon"></span>
-              </button>
-
-              <div className={`cb-nav-menu ${open ? 'show' : ''}`}>
-                <div>
-                  {links.map(([name, href]) => (
-                    <Link
-                      key={name}
-                      to={href}
-                      className={`nav-link cb-nav-link${location.pathname === href ? ' active' : ''}`}
-                      onClick={() => setOpen(false)}
-                    >
-                      {name}
-                    </Link>
-                  ))}
-
-                  <button
-                    type="button"
-                    className="nav-link cb-nav-link cb-search-btn"
-                    aria-label="Search"
-                    onClick={() => {
-                      setOpen(false)
-                      onSearch?.()
-                    }}
+        <nav>
+          <div className="bar">
+            <Link to="/" aria-label="ClassBoxes home">
+              <img className="cb-logo" src={logo} alt="ClassBoxes" />
+            </Link>
+            <button className="cb-burger" type="button" aria-label="Toggle navigation" onClick={() => setOpen((value) => !value)}>
+              <i className={`bi ${open ? 'bi-x-lg' : 'bi-list'}`}></i>
+            </button>
+            <div className={`cb-nav ${open ? 'show' : ''}`}>
+              {menus.map((menu) => {
+                const active = menu.items.some(([ , href]) => location.pathname === href)
+                return (
+                  <div
+                    key={menu.label}
+                    className={`cb-drop${drop === menu.label ? ' open' : ''}${active ? ' on' : ''}`}
                   >
-                    <i className="bi bi-search cb-search"></i>
-                  </button>
-                </div>
-
-                <a
-                  href="tel:+15513555230"
-                  className="cb-phone-btn"
-                >
-                  <i className="bi bi-telephone-fill"></i>
-                  +1-551-355-5230
-                </a>
-              </div>
-
+                    <button
+                      type="button"
+                      aria-expanded={drop === menu.label}
+                      onClick={() => setDrop((value) => (value === menu.label ? '' : menu.label))}
+                    >
+                      {menu.label} <i className="bi bi-chevron-down"></i>
+                    </button>
+                    <div className="cb-drop-panel">
+                      {menu.items.map(([name, href]) => (
+                        <Link key={href} to={href} onClick={() => setOpen(false)}>{name}</Link>
+                      ))}
+                    </div>
+                  </div>
+                )
+              })}
+              <Link className={`cb-direct${location.pathname === '/contact-us' ? ' active' : ''}`} to="/contact-us">Contact</Link>
+              <button
+                className="cb-icon"
+                type="button"
+                aria-label="Search"
+                onClick={() => {
+                  setOpen(false)
+                  onSearch?.()
+                }}
+              >
+                <i className="bi bi-search"></i>
+              </button>
+              <Link className="cb-hire" to="/find-talent">Hire Talent <i className="bi bi-arrow-up-right"></i></Link>
             </div>
           </div>
         </nav>

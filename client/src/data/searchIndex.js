@@ -3,49 +3,49 @@ export const searchEntries = [
     title: 'About ClassBoxes',
     path: '/about-us',
     keywords: 'about us company recruitment agency training new jersey',
-    text: 'Classboxes is an online learning platform and a recruitment agency in New Jersey. Training in Salesforce, Azure, DevOps, Amazon Web Services, SailPoint, Splunk, Business Analysis, Quality Analysis, Java, Dot Net, and Performance Testing. Career guidance, expert instruction, lifetime access, and lifelong learning.'
+    text: 'ClassBoxes teaches the tools companies hire for and introduces those people to teams in New Jersey, the United States, and Canada. Career direction, instructors, course access, and practice tasks.'
   },
   {
     title: 'Find a Job',
     path: '/find-a-job',
-    keywords: 'jobs careers apply openings hiring php java react python',
-    text: 'Finding jobs and direct apply with ClassBoxes. Resume writing, interview preparation, and career coaching in New Jersey. High quality jobs, immediate joining, zero hiring cost, and 12 month support. PHP, Java, React, and Python developer roles.'
+    keywords: 'jobs careers apply openings hiring php java react python profile',
+    text: 'A role you can explain in one sentence. Share your profile for Java, React, Python, or cloud work. Interview practice and a private introduction.'
   },
   {
     title: 'Find Talent',
     path: '/find-talent',
-    keywords: 'hire talent candidates recruit staffing zero cost',
-    text: 'Hire the best talent at zero cost. Companies connect with skilled professionals. High quality candidates, immediate joining, zero hiring cost, and 12 month support. Drop your hiring requirements.'
+    keywords: 'hire talent candidates recruit staffing shortlist role',
+    text: 'A few people, already spoken with. Send the role and receive a short list. Contract, trial, or direct hire. Piscataway and Montreal.'
   },
   {
     title: 'Test your Skills',
     path: '/test-your-skills',
-    keywords: 'exam quiz skills prize coding challenge register',
-    text: 'Test your skills and win prizes. Coding challenges and design contests. Register, participate, see the result announcement, and prize distribution. Online exam preparation.'
+    keywords: 'exam quiz skills review coding register book',
+    text: 'Show the work before the interview. Book a skill review. Register, take the review, hear the notes, and choose a next step.'
   },
   {
     title: 'Contact Us',
     path: '/contact-us',
-    keywords: 'contact email phone address piscataway office message',
-    text: 'Get in touch with ClassBoxes Technologies. 371 Hoes Lane, #200, Piscataway, New Jersey 08854. Email info@classboxes.com. Call +1-551-355-5230. Send a message from the contact form.'
+    keywords: 'contact email phone address piscataway office message montreal',
+    text: 'Write, call, or come by. 371 Hoes Lane, #200, Piscataway, New Jersey 08854. Email info@classboxes.com. Call +1-551-355-5230. Montreal office at Place Ville Marie.'
   },
   {
-    title: 'Need Candidates',
+    title: 'Send a role',
     path: '/find-talent',
-    keywords: 'candidates company requirement share',
-    text: 'We specialize in finding skilled and motivated candidates for your company and connect you with people who fit your unique needs.'
+    keywords: 'candidates company requirement shortlist hire',
+    text: 'Fill the seats that are slowing the roadmap. Shortlists from people ClassBoxes has already spoken with.'
   },
   {
-    title: 'Job Openings',
+    title: 'Open paths',
     path: '/find-a-job',
-    keywords: 'dream company job openings apply',
-    text: 'We connect talented individuals with employers and help job seekers find their dream jobs.'
+    keywords: 'career paths job openings apply profile',
+    text: 'Browse open paths and share a profile. ClassBoxes introduces you to a team that asked for your stack.'
   },
   {
     title: 'Headquarters',
     path: '/contact-us',
-    keywords: 'headquarters location map hoes lane new jersey canada',
-    text: 'ClassBoxes Technologies headquarters at 371 Hoes Lane, #200, Piscataway, New Jersey - 08854. Phone +1-551-355-5230. Email info@classboxes.com.'
+    keywords: 'headquarters location map hoes lane new jersey canada montreal',
+    text: 'ClassBoxes Technologies at 371 Hoes Lane, #200, Piscataway, New Jersey 08854, and 5 Place Ville Marie, Montreal. Phone +1-551-355-5230. Email info@classboxes.com.'
   }
 ]
 

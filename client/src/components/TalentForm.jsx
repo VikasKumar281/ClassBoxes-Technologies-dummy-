@@ -87,10 +87,10 @@ export default function TalentForm() {
         <div className="row g-4 align-items-start">
           <div className="col-lg-4">
             <div className="touch-copy">
-              <p className="page-kicker">SHARE YOUR REQUIREMENT</p>
-              <h2><span>Hire</span> with ClassBoxes</h2>
+              <p className="page-kicker">THE ROLE</p>
+              <h2>Send the seat you need filled</h2>
               <p>
-                Tell us the roles you need. Our team reviews every request and matches candidates from the ClassBoxes talent pool at zero hiring cost.
+                Write the work the way you would brief your own team. We reply with a short list of people we have already spoken with.
               </p>
               <div className="office-line">
                 <i className="bi bi-geo-alt"></i>

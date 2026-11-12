@@ -7,7 +7,7 @@ export default function PageLoader({ children }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoaded(true)
-    }, 750)
+    }, 280)
 
     return () => clearTimeout(timer)
   }, [])

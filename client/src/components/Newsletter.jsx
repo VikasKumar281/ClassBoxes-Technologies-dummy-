@@ -243,21 +243,19 @@ export default function Newsletter() {
               <div className="newsletter-content">
 
                 <p className="newsletter-eyebrow">
-                  KEEP UP TO DATE WITH CLASSBOXES
+                  A SHORT NOTE, OCCASIONALLY
                 </p>
 
                 <h2>
                   <span className="newsletter-red">
-                    Subscribe to
+                    Hiring notes
                   </span>
                   <br />
-                  Our Newsletter
+                  for your inbox
                 </h2>
 
                 <p className="newsletter-description">
-                  Subscribe to Classboxes Technologies' newsletter
-                  for updates on their latest educational products,
-                  tools, and industry insights.
+                  Roles we are filling, skills companies keep asking for, and the occasional note from the Piscataway desk.
                 </p>
 
                 <form

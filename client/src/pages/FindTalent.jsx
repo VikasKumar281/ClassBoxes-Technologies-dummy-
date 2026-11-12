@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom'
-import FeatureBand from '../components/FeatureBand'
-import LogoStrip from '../components/LogoStrip'
 import TalentForm from '../components/TalentForm'
 import RoleGrid from '../components/RoleGrid'
-import StatsBand from '../components/StatsBand'
 import usePageTitle from '../usePageTitle'
 import talentHero from '../assets/brand/talent-hero.png'
 
@@ -11,46 +8,45 @@ export default function FindTalent() {
   usePageTitle('Find Talent – ClassBoxes Technologies')
 
   return (
-    <main className="inner-page">
-      <section className="page-hero">
-        <div className="container">
-          <div className="row align-items-center g-4">
-            <div className="col-lg-6">
-              <p className="page-kicker">FINDING TALENT IS NOW MORE EASIER</p>
-              <h1>
-                <span>Hire the Best Talent</span>
-                <br />
-                at Zero Cost with ClassBoxes
-              </h1>
-              <p>
-                ClassBoxes is a unique platform that provides a solution for companies and organizations seeking to hire the best talent at zero cost. With ClassBoxes, businesses can connect with a pool of talented individuals who are eager to work and gain experience in their chosen fields.
-              </p>
-              <div className="hero-actions">
-                <a className="cb-btn" href="#inquiry">Drop Requirements</a>
-                <Link className="cb-btn dark" to="/contact-us">Contact Us</Link>
-              </div>
+    <main className="studio-page">
+      <section className="studio-hero">
+        <div className="container studio-hero-grid">
+          <div>
+            <p className="kicker dot">Hiring</p>
+            <h1>A few people, already spoken with.</h1>
+            <p className="quiet">
+              Describe the seat the way you would to your own team. We return a short list of people who can talk through that work, with notes on what they have done and where they will need support.
+            </p>
+            <div className="pill-row">
+              <a className="pill red" href="#inquiry">Send the role</a>
+              <Link className="pill ghost" to="/contact-us">Talk to the desk</Link>
             </div>
-            <div className="col-lg-6">
-              <div className="hero-art">
-                <img src={talentHero} alt="Hire dedicated employees in the USA" />
-              </div>
-            </div>
+          </div>
+          <div className="frame">
+            <img src={talentHero} alt="A hiring conversation" />
           </div>
         </div>
       </section>
 
-      <StatsBand />
-      <LogoStrip />
-
-      <FeatureBand
-        eyebrow="MORE THAN JUST HR"
-        title="Why hire from ClassBoxes?"
-        text="ClassBoxes is a cost-effective and efficient solution for businesses seeking to hire the best talent from a diverse pool of young professionals. With its easy-to-use platform and expert support, ClassBoxes can help businesses build a talented and innovative workforce for the future."
-        items={['High quality candidates', 'Immediate joining', 'Zero hiring cost', '12 Month Support']}
-      />
+      <section className="band sand">
+        <div className="container">
+          <div className="help-grid">
+            {[
+              ['A short list', 'Three or four names, not a folder of lookalike resumes.'],
+              ['A way to start', 'Contract, a trial that can become permanent, or a direct hire.'],
+              ['The first month', 'Onboarding stays part of the engagement, not an afterthought.'],
+              ['The tools you named', 'Cloud, application engineering, data, and quality, matched to the stack in the role.']
+            ].map(([title, text]) => (
+              <article className="help-card" key={title}>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <RoleGrid />
-
       <TalentForm />
     </main>
   )
